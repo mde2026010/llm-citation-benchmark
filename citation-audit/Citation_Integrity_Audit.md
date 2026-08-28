@@ -1,113 +1,48 @@
 # Citation Integrity Audit
 
-## Purpose
+## Submitted paper
 
-This document describes the verification protocol for the AI-assisted research paper associated with this repository.
+**Benchmarking Citation Fabrication Rates Across Large Language Models and Agentic Search Tools**
 
-The course activity requires researchers to verify references rather than accepting AI-generated citations blindly. The supplied instruction sheet explicitly says that the title, authors, publication year, journal/conference, DOI where available, existence of the paper, and correspondence of the supplied link should be checked.
+The submitted paper contains **23 bibliography entries**. This audit independently checked the bibliographic identity of each entry against publisher, DOI, PubMed, ACL Anthology, arXiv, CourtListener, or another authoritative record.
 
-## Historical paper profile
+## Result
 
-The earlier activity recorded:
+| Status | Count | Rate |
+|---|---:|---:|
+| Valid | 22 | 95.65% |
+| Partially valid / metadata error | 1 | 4.35% |
+| Fabricated | 0 | 0.00% |
+| **Total** | **23** | **100%** |
 
-- Approximate pages: **11**
-- Approximate word count: **~4,900 including references / ~4,200 body**
-- Main sections: **7**
-- Total references: **23**
-- Approximate in-text citation occurrences: **~54**
-- AI warning to verify references independently: **No**
+### Main finding
 
-These values describe the earlier paper and are retained as an activity record. They are not themselves a reference-verification result.
+**No bibliography entry was classified as fully fabricated under the existence criterion. One reference (R22) was classified as partially valid because the DOI/title identify a real 2026 paper, but the authors named in the submitted paper are incorrect.**
 
-## Verification categories
+The actual paper behind DOI `10.1007/s43465-026-01807-0` is by **İlhan Celil Özbek and Fatih Bağcıer**, not the authors stated in the submitted bibliography.
 
-### VALID
+Therefore:
 
-Use when:
+- **Fabrication rate (strict existence definition): 0 / 23 = 0.00%**
+- **Material metadata-error rate: 1 / 23 = 4.35%**
+- **Fully verified bibliography entries: 22 / 23 = 95.65%**
 
-- the work exists;
-- the title is substantially correct;
-- the authors correspond;
-- the year is consistent;
-- the venue is consistent;
-- DOI/identifier, when supplied, resolves to the same work;
-- the link points to the same work.
+This is intentionally different from the paper's literature-review claims about model fabrication rates. The audit measures the **paper's own references**; the literature table measures **published studies' reported model error rates**.
 
-### PARTIALLY_VALID
+## Important interpretation
 
-Use when the work exists but one or more meaningful bibliographic fields are wrong, such as:
+A real citation with incorrect authors is not the same thing as a nonexistent citation. The audit therefore separates:
 
-- incorrect year;
-- incorrect venue;
-- incomplete or incorrect author list;
-- incorrect DOI;
-- title drift that still permits confident identification.
-
-### FABRICATED
-
-Use when the claimed scholarly work cannot be verified as an existing work after the defined search procedure, or when the citation combines incompatible metadata from different works.
-
-## Recommended audit table
-
-| ID | Generated citation | Exists? | Title | Authors | Year | Venue | DOI | Link | Status | Verification source | Notes |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| R1 | Add generated reference | | | | | | | | | | |
-| R2 | Add generated reference | | | | | | | | | | |
-| ... | ... | | | | | | | | | | |
-| R23 | Add generated reference | | | | | | | | | | |
-
-## Calculation
-
-Let:
-
-- `N` = total references checked
-- `F` = fabricated references
-- `P` = partially valid references
-- `V` = valid references
-
-Then:
-
-```text
-Fabrication rate = F / N × 100
-Partial-error rate = P / N × 100
-Validity rate = V / N × 100
-```
-
-Always report the denominator.
-
-## Important distinction
-
-A fabricated bibliographic reference is not identical to a broken URL. A genuine paper can have a stale or broken web link, and a fabricated URL may not correspond to a fabricated bibliographic record. Agentic-search evaluations therefore benefit from separately measuring:
-
-1. bibliographic identity;
-2. URL resolution;
+1. existence;
+2. bibliographic accuracy;
 3. source identity;
-4. citation-to-claim support.
+4. claim-level groundedness.
 
-## Evidence sources
+A citation can pass existence checking and still fail claim-level support.
 
-Prefer:
+## Reference-level audit
 
-- publisher pages;
-- DOI/Crossref;
-- OpenAlex;
-- Semantic Scholar;
-- PubMed when relevant;
-- official conference proceedings;
-- official arXiv records for preprints.
+The machine-readable audit is available at:
 
-Do not classify a reference as genuine merely because a search engine returns a similar title.
+`data/citation_audit_23_references.csv`
 
-## Reproducibility record
-
-For each verification session, record:
-
-- date;
-- verifier;
-- search source;
-- exact query where useful;
-- final metadata;
-- decision;
-- reason for ambiguous decisions.
-
-This makes the audit independently inspectable.

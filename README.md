@@ -1,216 +1,131 @@
 # Awesome Citation Fabrication Benchmark
 
-A curated research repository on **benchmarking citation fabrication rates across Large Language Models (LLMs) and agentic search/deep-research tools**.
+A curated, verified research repository based on the submitted paper:
 
-The repository connects an AI-assisted research-paper activity with citation-integrity auditing and a reusable collection of verified scholarly literature, datasets/benchmarks, tools, implementations, and learning resources.
+> **Benchmarking Citation Fabrication Rates Across Large Language Models and Agentic Search Tools**
 
-> **Core principle:** AI can help discover candidate references, but every scholarly resource should be independently verified before it is treated as evidence.
+The project studies citation fabrication, bibliographic accuracy, citation groundedness, retrieval-augmented generation, and the reliability of agentic/deep-research systems.
 
 ## Contents
 
 - [Overview](#overview)
-- [Research Questions](#research-questions)
 - [AI-Assisted Research Paper](#ai-assisted-research-paper)
 - [Citation Integrity Audit](#citation-integrity-audit)
-- [Verified Research Papers](#verified-research-papers)
+- [Literature Benchmark Results](#literature-benchmark-results)
+- [Curated Research Papers](#curated-research-papers)
 - [Datasets and Benchmarks](#datasets-and-benchmarks)
 - [Tools and Libraries](#tools-and-libraries)
 - [GitHub Implementations](#github-implementations)
 - [Tutorials and Learning Resources](#tutorials-and-learning-resources)
-- [Verification Method](#verification-method)
-- [Suggested Experimental Protocol](#suggested-experimental-protocol)
+- [Repository Structure](#repository-structure)
+- [How to Extend the Project](#how-to-extend-the-project)
 - [Limitations](#limitations)
 - [License](#license)
 
 ## Overview
 
-Large language models can produce fluent, persuasive answers while still generating unsupported facts or unreliable references. Citation fabrication is a particularly auditable form of this problem because a reference can be checked against scholarly metadata services and publisher records. Earlier empirical work has reported substantial fabrication and citation-error rates in some LLM-generated bibliographies, while newer work has expanded the question to citation URLs and deep-research agents.
+Large language models are increasingly used for literature search, writing and research assistance. The central reliability problem is not limited to prose hallucination: models can also produce citations that do not exist, contain incorrect bibliographic metadata, point to the wrong source, or cite a real source that does not support the claim being made. The submitted paper reviews evidence across closed-book LLMs, retrieval-augmented systems, generative search engines, legal research products and deep-research agents.
 
-This project focuses on **citation integrity rather than general text quality**. The main unit of analysis is a reference or citation supplied by an LLM or an agentic research system. A useful evaluation should distinguish at least three outcomes:
+A key lesson is that **citation existence is only one layer of reliability**. The paper distinguishes fabrication from bibliographic error and from claim-level misgrounding. Agentic search adds further failure stages: retrieval failure, ranking/filtering failure, generation failure, URL failure and publisher-access constraints. Consequently, comparing one headline “hallucination rate” across unrelated studies can be misleading.
 
-1. **Valid** — the cited work exists and the bibliographic identity is substantially correct.
-2. **Partially valid / inaccurate** — the cited work exists, but one or more important bibliographic fields are wrong.
-3. **Fabricated / hallucinated** — the claimed scholarly work cannot be verified as an existing work under the defined verification protocol.
-
-For agentic systems, the project also distinguishes **citation URL validity** from **bibliographic reference validity**. A URL can fail because it is fabricated, non-resolving, or simply stale, so these failure modes should not automatically be treated as the same phenomenon.
-
-## Research Questions
-
-- How often do LLMs generate fabricated scholarly references?
-- How does fabrication vary by model, prompt, discipline, and reference format?
-- Do newer models consistently reduce citation fabrication?
-- How do ordinary LLMs compare with web-search and deep-research agents?
-- What is the difference between a fabricated bibliographic reference and a fabricated/non-resolving citation URL?
-- Which verification methods are most reproducible and scalable?
+The repository turns the paper into a reusable research resource: it preserves the paper, audits all 23 bibliography entries, organizes 20 scholarly papers, collects relevant benchmarks and tools, and documents reproducible GitHub implementations. The literature results are clearly labelled as **reported results from prior studies**, not fabricated experiments performed in this repository.
 
 ## AI-Assisted Research Paper
 
-**Topic:** Benchmarking Citation Fabrication Rates Across Large Language Models and Agentic Search Tools.
+**Title:** Benchmarking Citation Fabrication Rates Across Large Language Models and Agentic Search Tools
 
-The repository is designed to hold the student's own earlier AI-assisted paper without redistributing copyrighted third-party papers.
+The paper is included in both editable and PDF form:
 
-- `paper/README.md` — paper placement and metadata
-- Add your own paper PDF as `paper/AI_Assisted_Research_Paper.pdf`
+- [PDF](paper/AI_Assisted_Research_Paper.pdf)
+- [DOCX](paper/AI_Assisted_Research_Paper.docx)
 
 ## Citation Integrity Audit
 
-The earlier course activity reported the following paper-level audit profile:
+The submitted paper contains **23 bibliography entries**.
 
-| Measure | Reported value |
+| Audit result | Count |
 |---|---:|
-| Approximate pages | 11 |
-| Approximate word count | ~4,900 including references / ~4,200 body |
-| Main sections | 7 |
-| Total references | 23 |
-| Approximate in-text citation occurrences | ~54 |
-| AI warning to independently verify references | No |
+| Valid | 22 |
+| Partially valid / metadata error | 1 |
+| Fabricated | 0 |
+| Total | 23 |
 
-The repository does **not** treat those historical summary numbers as proof that every one of the 23 earlier references was genuine. The audit procedure in `citation-audit/Citation_Integrity_Audit.md` defines how each reference should be checked.
+**Strict fabrication rate of the paper's own bibliography: 0.00%.**
 
-## Verified Research Papers
+**Material metadata-error rate: 4.35%.**
 
-The repository contains **20 verified scholarly papers/resources** selected for relevance to citation fabrication, citation accuracy, hallucination detection, citation generation, and deep-research evaluation.
+The one partial case is important: the cited DOI/title correspond to a real 2026 article, but the paper gave the wrong authors. This demonstrates why DOI-existence checking alone is insufficient.
+
+- [Full audit](citation-audit/Citation_Integrity_Audit.md)
+- [Machine-readable audit CSV](data/citation_audit_23_references.csv)
+
+## Literature Benchmark Results
+
+The paper's literature table reports wide variation. Examples include:
+
+- GPT-3.5: **55%** fabricated citations in Walters & Wilder.
+- GPT-4: **18%** in the same study.
+- GPT-4o: **19.9%** overall in Linardon et al.
+- Eight-chatbot bibliographic retrieval study: **39.8%** erroneous or fabricated references.
+- Legal RAG products: **17–33%** hallucination in Magesh et al.
+- GhostCite: **14.23–94.93%** across 13 LLMs and 40 domains.
+
+These values are **not directly pooled** because the underlying studies use different prompts, domains, models, definitions and verification methods.
+
+![Literature benchmark](figures/literature_benchmark_rates.png)
 
 See:
 
-- `references/references.md`
-- `data/paper_catalog.csv`
+- [Literature benchmark CSV](data/literature_benchmark.csv)
+- [Interpretation](results/literature_benchmark_results.md)
 
-Categories:
+## Curated Research Papers
 
-- Citation fabrication and accuracy
-- Citation recommendation and citation generation
-- Hallucination detection/evaluation
-- Citation-supported generation
-- Agentic/deep-research evaluation
+The repository contains **20 scholarly papers** selected directly from the submitted paper's bibliography and grouped by research purpose.
+
+See [references/references.md](references/references.md).
 
 ## Datasets and Benchmarks
 
-See `datasets/datasets.md`.
-
-Included resources include:
-
 - ALCE
 - DeepResearch Bench
-- DRBench
-- BrowseComp
-- HaluEval
+- AuthorityBench
+- LegalCiteBench
 - HalluLens
-- HALoGEN
+
+See [datasets/datasets.md](datasets/datasets.md).
 
 ## Tools and Libraries
 
-See `tools/tools.md`.
-
-The workflow emphasizes:
-
 - Crossref
 - OpenAlex
-- Semantic Scholar
-- DOI resolution
-- PubMed where applicable
-- Unpaywall
-- RAGAS / citation-evaluation tooling
+- DOI
+- PubMed
+- urlhealth
+- CiteVerifier / GhostCite
+- ALCE
+
+See [tools/tools.md](tools/tools.md).
 
 ## GitHub Implementations
 
-See `implementations/github-repositories.md`.
+Seven relevant implementations are documented, including:
 
-The collection prioritizes projects with research connections, documentation, reproducibility, and active/public source code.
+- Microsoft hallucinated-references
+- Princeton NLP ALCE
+- Facebook Research HalluLens
+- AuthorityBench
+- DeepResearch Bench
+- GhostCite/CiteVerifier
+- urlhealth
+
+See [implementations/github-repositories.md](implementations/github-repositories.md).
 
 ## Tutorials and Learning Resources
 
-See `tutorials/tutorials.md` for authoritative documentation and benchmark pages useful for reproducing the verification workflow.
+The repository provides authoritative documentation for Crossref, OpenAlex, DOI, ALCE, HalluLens, DeepResearch Bench and urlhealth.
 
-## Verification Method
-
-For every candidate scholarly reference:
-
-1. Normalize the title, authors, year, venue, and DOI.
-2. Search an authoritative metadata source.
-3. Confirm that the record exists.
-4. Compare the generated and verified title.
-5. Compare author identity.
-6. Compare publication year.
-7. Compare venue/publisher.
-8. Compare DOI when available.
-9. Check whether the supplied link points to the same work.
-10. Assign a final status: `valid`, `partially_valid`, or `fabricated`.
-11. Record the verification source and date.
-
-For URL-based citations from research agents, additionally record:
-
-- HTTP/URL resolution status
-- whether the destination is the claimed source
-- whether the URL appears to be a genuine but stale link
-- whether an archival record exists when needed
-
-## Suggested Experimental Protocol
-
-A reproducible benchmark can use the same prompt set across systems.
-
-### Phase 1 — Generate
-
-For each model/agent:
-
-- use identical research prompts;
-- request a fixed number of scholarly references;
-- save the raw output;
-- record model name/version, date, prompt, and tool mode.
-
-### Phase 2 — Parse
-
-Extract each reference into structured fields:
-
-`title | authors | year | venue | DOI | URL`
-
-### Phase 3 — Verify
-
-Run the reference through multiple metadata sources and manually resolve ambiguous cases.
-
-### Phase 4 — Score
-
-At minimum calculate:
-
-- **Fabrication rate** = fabricated references / total references
-- **Partial-error rate** = partially valid references / total references
-- **Validity rate** = valid references / total references
-- **URL non-resolution rate** for agentic citation links
-
-### Phase 5 — Compare
-
-Compare systems using the same:
-
-- prompts
-- number of trials
-- citation budget
-- verification rules
-- exclusion criteria
-
-Do not compare percentages obtained from studies with incompatible definitions as if they were directly equivalent.
-
-## Limitations
-
-- Citation fabrication definitions differ across studies.
-- A reference can exist but still be bibliographically inaccurate.
-- A URL can be broken because of link rot rather than fabrication.
-- Search-engine indexing is not a perfect proof of non-existence.
-- Different disciplines have different DOI and metadata conventions.
-- Model versions and product configurations change over time.
-- Results from published studies should not be presented as if they were measurements made in this repository.
-
-## Reproducibility Checklist
-
-- [ ] Record exact model/version.
-- [ ] Record exact prompt.
-- [ ] Record date/time of generation.
-- [ ] Save raw outputs.
-- [ ] Save parsed references.
-- [ ] Save verification results.
-- [ ] Use consistent classification rules.
-- [ ] Report denominators, not only percentages.
-- [ ] Keep an audit trail for ambiguous cases.
-- [ ] Do not upload copyrighted third-party PDFs without permission.
+See [tutorials/tutorials.md](tutorials/tutorials.md).
 
 ## Repository Structure
 
@@ -218,7 +133,8 @@ Do not compare percentages obtained from studies with incompatible definitions a
 awesome-citation-fabrication-benchmark/
 ├── README.md
 ├── paper/
-│   └── README.md
+│   ├── AI_Assisted_Research_Paper.pdf
+│   └── AI_Assisted_Research_Paper.docx
 ├── citation-audit/
 │   └── Citation_Integrity_Audit.md
 ├── references/
@@ -232,6 +148,80 @@ awesome-citation-fabrication-benchmark/
 ├── tutorials/
 │   └── tutorials.md
 ├── data/
-│   └── paper_catalog.csv
+│   ├── citation_audit_23_references.csv
+│   ├── audit_summary.json
+│   ├── literature_benchmark.csv
+│   └── project_metadata.md
+├── results/
+│   └── literature_benchmark_results.md
+├── figures/
+│   └── literature_benchmark_rates.png
+├── COMMIT_PLAN.md
 └── LICENSE
 ```
+
+## How to Extend the Project
+
+The next stage is a controlled primary benchmark.
+
+### 1. Select systems
+
+Separate:
+- closed-book LLMs;
+- retrieval-augmented chat systems;
+- agentic/deep-research systems.
+
+### 2. Use identical prompts
+
+Use the same research prompts and request the same number of citations.
+
+### 3. Save raw outputs
+
+Record model version, date, prompt and raw response.
+
+### 4. Parse citations
+
+Extract:
+`title | authors | year | venue | DOI | URL`
+
+### 5. Verify
+
+Check:
+- existence;
+- title;
+- authors;
+- year;
+- venue;
+- DOI;
+- URL identity;
+- claim-level support.
+
+### 6. Score
+
+At minimum:
+
+```text
+Fabrication rate = fabricated / total × 100
+Metadata error rate = partial / total × 100
+Validity rate = valid / total × 100
+```
+
+For agents, separately measure URL non-resolution and stale-vs-hallucinated URLs.
+
+### 7. Compare
+
+Compare systems only when the benchmark conditions are genuinely comparable.
+
+## Limitations
+
+- Published studies use different operational definitions.
+- Model versions change quickly.
+- Domains and prompts can strongly affect results.
+- A real citation may still be irrelevant to the claim.
+- A dead URL is not automatically a fabricated citation.
+- Retrieval systems combine retrieval, ranking and generation, so a single error rate can hide several causal stages.
+- This repository intentionally does not invent new model-run results.
+
+## License
+
+Original repository documentation is released under the MIT License. Third-party papers and repositories remain under their own licenses; this repository links to them rather than redistributing copyrighted PDFs.

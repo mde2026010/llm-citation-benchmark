@@ -1,43 +1,29 @@
 # Tutorials and Learning Resources
 
-## 1. Crossref Documentation
-
-Learn DOI metadata retrieval and scholarly record lookup.
-
+## Crossref Documentation
+How to retrieve and work with scholarly metadata and DOI records.
 https://www.crossref.org/documentation/
 
-## 2. OpenAlex Documentation
-
-Learn how to query the open scholarly metadata graph.
-
+## OpenAlex Documentation
+How to query an open scholarly metadata graph.
 https://docs.openalex.org/
 
-## 3. Semantic Scholar API Documentation
-
-Useful for programmatic paper lookup and citation-graph exploration.
-
-https://api.semanticscholar.org/
-
-## 4. DOI Handbook
-
-Background on DOI identifiers, resolution and persistence.
-
+## DOI Foundation Resources
+Background on DOI identifiers and resolution.
 https://www.doi.org/the-identifier/resources/factsheets/
 
-## 5. PubMed User Guide
+## ALCE README
+Practical instructions for citation-supported generation and automatic citation evaluation.
+https://github.com/princeton-nlp/ALCE
 
-Useful for biomedical reference verification.
+## HalluLens README
+Setup and usage instructions for a dynamic hallucination benchmark.
+https://github.com/facebookresearch/HalluLens
 
-https://pubmed.ncbi.nlm.nih.gov/help/
+## DeepResearch Bench README
+How to prepare model outputs and run the research-agent evaluation pipeline.
+https://github.com/Ayanami0730/deep_research_bench
 
-## 6. BrowseComp
-
-Read the benchmark design and evaluation setup for difficult web-browsing tasks.
-
-https://openai.com/index/browsecomp/
-
-## 7. DeepResearch Bench
-
-Read the benchmark design, citation-accuracy evaluation and released resources.
-
-https://deepresearch-bench.github.io/
+## urlhealth README
+Practical URL-health and stale-vs-hallucinated classification workflow.
+https://github.com/delip/urlhealth

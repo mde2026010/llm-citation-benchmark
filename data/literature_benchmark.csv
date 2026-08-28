@@ -1,0 +1,12 @@
+Study,System,System_Type,Reported_Rate,Plot_Value,Notes
+Walters & Wilder (2023),GPT-3.5,LLM,55,55.0,Multidisciplinary literature reviews; 636 citations
+Walters & Wilder (2023),GPT-4,LLM,18,18.0,Multidisciplinary literature reviews; 636 citations
+Athaluri et al. (2023),GPT-3 / ChatGPT,LLM,~54 DOI/match failure,54.0,Research-proposal references; 178 citations
+Agrawal et al. (2024),GPT-3,LLM,~70,70.0,Reference-title hallucination; self-consistency probing
+Agrawal et al. (2024),GPT-4,LLM,<50,49.9,Reference-title hallucination; self-consistency probing; upper bound shown
+Linardon et al. (2025),GPT-4o,LLM,19.9,19.9,Mental-health literature; topic-familiarity effect
+Chelli et al. (2024),ChatGPT/Bard,LLM,28.6–91.3,60.0,Systematic-review replication; range across settings
+Cabezas-Clavijo & Sidorenko-Bautista (2025),8 chatbots,LLM,39.8,39.8,400 academic references; erroneous or fabricated
+Dahl et al. (2024),GPT-3.5/GPT-4/PaLM2/Llama2,LLM,58–88,73.0,Legal hallucination rate across models
+Magesh et al. (2024),Lexis+ AI/Westlaw/Ask Practical Law,RAG legal tools,17–33,25.0,Hand-scored legal queries
+GhostCite/CiteVerifier (2026),13 state-of-the-art LLMs,LLM,14.23–94.93,54.58,"40 research domains; 375,440 citations"

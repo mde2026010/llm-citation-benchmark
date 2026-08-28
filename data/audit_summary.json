@@ -1,0 +1,9 @@
+{
+  "total_references": 23,
+  "valid": 22,
+  "partially_valid": 1,
+  "fabricated": 0,
+  "fabrication_rate_percent": 0.0,
+  "metadata_error_rate_percent": 4.3478260869565215,
+  "fully_verified_rate_percent": 95.65217391304348
+}

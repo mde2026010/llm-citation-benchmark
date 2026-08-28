@@ -1,19 +1,23 @@
 # Project Metadata
 
-**Repository name:** `awesome-citation-fabrication-benchmark`
+**Repository:** `awesome-citation-fabrication-benchmark`
 
-**Research topic:** Benchmarking Citation Fabrication Rates Across Large Language Models and Agentic Search Tools
+**Topic:** Benchmarking Citation Fabrication Rates Across Large Language Models and Agentic Search Tools
 
-**Repository type:** Academic Awesome-style research curation repository
+**Source paper:** Submitted 12-page DOCX paper converted to PDF in `paper/`.
 
-**Prepared:** 28 August 2026
+**Bibliography audited:** 23 references
 
-**Minimum assignment targets addressed by this package:**
-- 20 scholarly papers
-- 3+ datasets/benchmarks
-- 5+ tools/resources
-- 5+ implementations
-- 5+ tutorials/resources
-- README with navigation and topic overview
-- citation-integrity audit methodology
-- meaningful Git commit plan
+**Audit result:** 22 valid, 1 partially valid, 0 fabricated under the strict existence criterion.
+
+**Curated scholarly papers:** 20
+
+**Datasets/benchmarks:** 5
+
+**Tools/resources:** 7
+
+**GitHub implementations:** 7
+
+**Learning resources:** 7
+
+**Primary-results status:** This repository does not invent new model-run results. The quantitative benchmark section is explicitly a literature synthesis based on the submitted paper. A future experimental run is documented as an extension protocol.

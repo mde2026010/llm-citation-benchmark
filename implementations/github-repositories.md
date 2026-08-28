@@ -1,45 +1,39 @@
 # GitHub Implementations
 
-These are existing public projects connected to the research area. They are linked rather than copied into this repository.
+The assignment requires at least five existing implementations to be evaluated for relevance, documentation, reproducibility, maintenance and licensing. These are the strongest matches for the submitted paper.
 
-## 1. SelfCheckGPT
+## 1. Microsoft — hallucinated-references
+- **Implements:** Consistency-check experiments for hallucinated references.
+- **Why relevant:** Directly reproduces Agrawal et al.'s reference-hallucination methodology.
+- **Repository:** https://github.com/microsoft/hallucinated-references
+- **License:** MIT, as shown by the repository.
 
-Black-box hallucination detection through sampling-based consistency checks.
+## 2. Princeton NLP — ALCE
+- **Implements:** Automatic LLM citation evaluation with ASQA, QAMPARI and ELI5.
+- **Why relevant:** Direct citation-quality benchmark.
+- **Repository:** https://github.com/princeton-nlp/ALCE
 
-- https://github.com/potsawee/selfcheckgpt
-- Paper: https://aclanthology.org/2023.emnlp-main.557/
+## 3. Facebook Research — HalluLens
+- **Implements:** Dynamic hallucination evaluation.
+- **Why relevant:** Supports leakage-resistant hallucination benchmarking.
+- **Repository:** https://github.com/facebookresearch/HalluLens
 
-## 2. Citation-Enhanced Generation (CEG)
+## 4. floating-reeds — AuthorityBench
+- **Implements:** 2×2 claim/citation-truth benchmark and evaluator notebooks.
+- **Why relevant:** Directly studies citation-induced authority effects.
+- **Repository:** https://github.com/floating-reeds/AuthorityBench
 
-Post-hoc citation-supported generation for LLM chatbots.
+## 5. Ayanami0730 — DeepResearch Bench
+- **Implements:** Benchmarking and evaluation pipeline for deep-research agents.
+- **Why relevant:** Directly addresses the agentic-search side of this project.
+- **Repository:** https://github.com/Ayanami0730/deep_research_bench
 
-- https://github.com/Tsinghua-dhy/CEG
-- Paper: https://aclanthology.org/2024.acl-long.79/
+## 6. TochusC — GhostCite
+- **Implements:** CiteVerifier and large-scale citation-validity analysis.
+- **Why relevant:** Closest direct implementation to the project's central problem.
+- **Repository:** https://github.com/TochusC/GhostCite
 
-## 3. DeepResearch Bench
-
-Benchmark implementation for evaluating deep-research agents.
-
-- https://github.com/Ayanami0730/deep_research_bench
-- Paper: https://arxiv.org/abs/2506.11763/
-
-## 4. DRBench
-
-Enterprise deep-research benchmark with public/private information settings.
-
-- https://github.com/ServiceNow/drbench
-- Paper: https://openreview.net/forum?id=IGYQ4c92e2
-
-## 5. OpenAI simple-evals / BrowseComp
-
-Evaluation repository containing BrowseComp.
-
-- https://github.com/openai/simple-evals
-- Benchmark page: https://openai.com/index/browsecomp/
-
-## 6. RAGAS
-
-Open-source evaluation framework for RAG systems.
-
-- https://github.com/explodinggradients/ragas
-- Paper: https://arxiv.org/abs/2309.15217
+## 7. delip — urlhealth
+- **Implements:** URL liveness and stale-vs-likely-hallucinated classification.
+- **Why relevant:** Directly supports citation-URL auditing in deep-research agents.
+- **Repository:** https://github.com/delip/urlhealth
